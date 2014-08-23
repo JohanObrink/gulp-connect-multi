@@ -18,9 +18,10 @@ function Server() {
     s.o.root = s.o.root || ['app'];
     s.o.port = s.o.port || 3000;
     s.o.livereload = typeof s.o.livereload === 'boolean' ? s.o.livereload : (s.o.livereload || true);
-    s.o.open = s.o.open || {};
-    if (!s.o.open.file) s.o.open.file = '';
-    if (!s.o.open.browser) s.o.open.browser = undefined;
+    if(s.o.open){
+      if (!s.o.open.file) s.o.open.file = '';
+      if (!s.o.open.browser) s.o.open.browser = undefined;
+    }
     return function () {
       var middleware = s.o.middleware ? s.o.middleware.call(s, connect, s.o) : [];
       if (s.o.livereload) {
